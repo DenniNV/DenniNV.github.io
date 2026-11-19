@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Денис Науменков — Senior Unity Developer</title>
+<meta name="description" content="Senior Unity Developer (Multiplayer / Gameplay). 6+ лет коммерческой разработки на Unity: PvP-мультиплеер на FishNet, client-side prediction, 60 игроков в матче. LiveOps проекта со 100M+ установок.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Денис Науменков — Senior Unity Developer (Multiplayer / Gameplay)">
+<meta property="og:description" content="6+ лет на Unity. PvP-мультиплеер на FishNet: client-side prediction, пинг до 250 мс, 60 игроков в матче. Riding Extreme 3D — 100M+ установок.">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://denninv.github.io/">
+<link rel="canonical" href="https://denninv.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b7a6b">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b7a6b'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' text-anchor='middle' fill='white'%3EDN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js" defer></script>
+<style>
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #15181d;
+  --muted: #5a6370;
+  --border: #e2e5ea;
+  --line: #d5d9df;
+  --accent: #0b7a6b;
+  --accent-soft: #e4f3f0;
+  --accent-ring: rgba(11, 122, 107, .35);
+  --on-accent: #ffffff;
+  --chip: #f1f3f5;
+  --code-bg: #f8f9fb;
+  --tok-kw: #7c3aed;
+  --tok-bi: #2563eb;
+  --tok-type: #0b7a6b;
+  --tok-str: #b45309;
+  --tok-num: #c2410c;
+  --tok-com: #6b7280;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 12px 32px rgba(16, 24, 40, .06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1014;
+    --surface: #151a20;
+    --text: #e7eaef;
+    --muted: #a1aab6;
+    --border: #242b34;
+    --line: #333c47;
+    --accent: #3cc9b3;
+    --accent-soft: #163430;
+    --accent-ring: rgba(60, 201, 179, .4);
+    --on-accent: #062b26;
+    --chip: #1c232b;
+    --code-bg: #0f1318;
+    --tok-kw: #c4a7ff;
+    --tok-bi: #7fb0ff;
+    --tok-type: #3cc9b3;
+    --tok-str: #f0b26b;
+    --tok-num: #ff9f6b;
+    --tok-com: #8b95a3;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1014;
+  --surface: #151a20;
+  --text: #e7eaef;
+  --muted: #a1aab6;
+  --border: #242b34;
+  --line: #333c47;
+  --accent: #3cc9b3;
+  --accent-soft: #163430;
+  --accent-ring: rgba(60, 201, 179, .4);
+  --on-accent: #062b26;
+  --chip: #1c232b;
+  --code-bg: #0f1318;
+  --tok-kw: #c4a7ff;
+  --tok-bi: #7fb0ff;
+  --tok-type: #3cc9b3;
+  --tok-str: #f0b26b;
+  --tok-num: #ff9f6b;
+  --tok-com: #8b95a3;
+  --shadow: none;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.page { max-width: 1080px; margin: 0 auto; padding: 40px 16px 56px; }
+.sheet {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 48px;
+}
+.icon { width: 16px; height: 16px; flex: none; }
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+h1 { margin: 0; font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -.02em; }
+.role { margin: 10px 0 0; font-size: 20px; line-height: 1.35; font-weight: 600; }
+.role span { color: var(--accent); }
+.meta {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.meta li { display: inline-flex; align-items: center; gap: 6px; }
+
+.contacts { display: flex; flex-direction: column; gap: 8px; min-width: 260px; }
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.contact:hover { border-color: var(--accent); text-decoration: none; }
+.contact .icon { color: var(--accent); }
+.contact small { margin-left: auto; padding-left: 8px; color: var(--muted); font-size: 12px; font-weight: 400; white-space: nowrap; }
+.contact.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.contact.primary .icon, .contact.primary small { color: inherit; }
+.contact.primary small { opacity: .8; }
+
+.stats {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.stats li { padding: 16px; border-radius: 14px; background: var(--chip); }
+.stats b {
+  display: block;
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.stats span { display: block; margin-top: 6px; font-size: 13px; line-height: 1.4; color: var(--muted); }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 56px;
+  margin-top: 44px;
+}
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  font: 600 12px/1.2 "JetBrains Mono", ui-monospace, Consolas, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h2::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+section + section { margin-top: 40px; }
+.summary p { margin: 0; font-size: 16px; line-height: 1.65; }
+
+.job {
+  position: relative;
+  margin-left: 8px;
+  padding: 0 0 32px 28px;
+}
+.job:last-child { padding-bottom: 0; }
+.job::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: -8px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--line);
+}
+.job::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+  transform-origin: top;
+}
+.job:last-child::after { display: none; }
+.job.current::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  animation: ping 2.4s ease-out 1.4s infinite;
+}
+.job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 16px; }
+.job h3 { margin: 0; font-size: 18px; line-height: 1.3; font-weight: 600; }
+.company { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.company a { font-weight: 500; }
+.period {
+  margin: 0;
+  font: 500 13px/1.4 "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.lead { margin: 12px 0 0; }
+.bullets { list-style: none; margin: 10px 0 0; padding: 0; }
+.bullets li { position: relative; margin-top: 6px; padding-left: 18px; }
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+strong { font-weight: 600; }
+.tags, .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
+.tags { margin-top: 14px; }
+.tags li, .chips li {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--chip);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+aside section + section { margin-top: 36px; }
+.skill-group + .skill-group { margin-top: 16px; }
+.skill-group h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; }
+.facts { list-style: none; margin: 0; padding: 0; }
+.facts li + li { margin-top: 12px; }
+.facts b { display: block; font-size: 14px; font-weight: 600; }
+.facts span { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+.note { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+
+footer {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.topbar { display: flex; justify-content: flex-end; margin-bottom: 28px; }
+.tabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--chip); }
+.tab {
+  padding: 8px 20px;
+  border-radius: 9px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.tab:hover { color: var(--text); text-decoration: none; }
+.tab[aria-selected="true"] {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .08), 0 2px 8px rgba(16, 24, 40, .06);
+}
+.js .panel:not(.active) { display: none; }
+.panel.active { animation: panel-in .35s ease-out; }
+@keyframes panel-in { from { opacity: 0; } to { opacity: 1; } }
+
+.repo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 36px;
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--chip);
+}
+.repo-main { flex: 1 1 420px; min-width: 0; }
+.eyebrow {
+  margin: 0;
+  font: 600 12px/1.2 "JetBrains Mono", ui-monospace, Consolas, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.repo-title {
+  display: block;
+  margin: 8px 0 0;
+  color: var(--text);
+  font: 700 30px/1.15 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -.02em;
+  text-transform: none;
+}
+.repo-title::after { content: none; }
+.repo-lead { margin: 10px 0 0; max-width: 64ch; }
+.repo-facts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 16px 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.repo-facts b { color: var(--text); font-weight: 700; }
+.repo-actions { display: flex; flex-direction: column; gap: 8px; min-width: 240px; }
+.repo .contact:not(.primary) { background: var(--surface); }
+
+.showcases { margin-top: 44px; }
+.showcase { padding: 36px 0 0; margin-top: 36px; border-top: 1px solid var(--border); }
+.showcase:first-of-type { padding-top: 0; margin-top: 0; border-top: 0; }
+.showcase-head { display: flex; align-items: baseline; gap: 14px; }
+.showcase-num { font: 600 14px/1 "JetBrains Mono", ui-monospace, Consolas, monospace; color: var(--accent); }
+.showcase h3 { margin: 0; font-size: 21px; line-height: 1.3; font-weight: 600; }
+.showcase-path { margin: 4px 0 0; font: 500 12.5px/1.4 "JetBrains Mono", ui-monospace, Consolas, monospace; color: var(--muted); }
+.showcase-text { max-width: 78ch; margin-top: 14px; }
+.showcase-text p { margin: 10px 0 0; }
+.why {
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: var(--accent-soft);
+}
+.links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; font-weight: 500; }
+:not(pre) > code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--chip);
+  font: 500 .88em/1 "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+.why code { background: var(--surface); }
+.snippets { display: grid; gap: 14px; margin-top: 18px; }
+.snippet { margin: 0; min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 12px; background: var(--code-bg); }
+.snippet figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--chip);
+  color: var(--muted);
+  font: 500 12px/1.4 "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+.snippet figcaption span { overflow-wrap: anywhere; }
+.snippet figcaption a { white-space: nowrap; }
+.snippet pre {
+  margin: 0;
+  padding: 14px 16px;
+  max-height: 460px;
+  overflow: auto;
+  color: var(--text);
+  font: 400 12.5px/1.6 "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-variant-ligatures: none;
+  tab-size: 4;
+}
+.snippet pre code { font: inherit; }
+.hljs-keyword, .hljs-literal { color: var(--tok-kw); }
+.hljs-built_in, .hljs-type { color: var(--tok-bi); }
+.hljs-title, .hljs-title.class_, .hljs-title.function_ { color: var(--tok-type); }
+.hljs-string { color: var(--tok-str); }
+.hljs-number { color: var(--tok-num); }
+.hljs-comment { color: var(--tok-com); font-style: italic; }
+.hljs-meta { color: var(--muted); }
+.license { margin-top: 40px; }
+
+@keyframes ping {
+  0% { box-shadow: 0 0 0 0 var(--accent-ring); }
+  70%, 100% { box-shadow: 0 0 0 10px transparent; }
+}
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity .6s ease-out var(--d, 0ms),
+    transform .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms);
+}
+.js .reveal.in { opacity: 1; transform: none; }
+.js .job.reveal::before {
+  transform: scale(0);
+  transition: transform .5s cubic-bezier(.34, 1.56, .64, 1) calc(var(--d, 0ms) + 180ms);
+}
+.js .job.reveal.in::before { transform: scale(1); }
+.js .job.reveal::after {
+  transform: scaleY(0);
+  transition: transform .9s cubic-bezier(.65, 0, .35, 1) calc(var(--d, 0ms) + 250ms);
+}
+.js .job.reveal.in::after { transform: scaleY(1); }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal, .js .job.reveal::before, .js .job.reveal::after { transition: none; }
+  .job.current::before { animation: none; }
+}
+
+@media screen and (max-width: 900px) {
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+}
+@media screen and (max-width: 640px) {
+  .page { padding: 16px 16px 40px; }
+  .sheet { padding: 24px 20px; border-radius: 16px; }
+  h1 { font-size: 30px; }
+  .role { font-size: 17px; }
+  .contacts { min-width: 0; width: 100%; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 28px; }
+  .stats li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .stats b { font-size: 22px; }
+  .layout { margin-top: 36px; }
+  .job { padding-left: 22px; }
+  .topbar { margin-bottom: 20px; }
+  .tabs { display: flex; width: 100%; }
+  .tab { flex: 1; }
+  .repo { padding: 20px; }
+  .repo-title { font-size: 26px; }
+  .repo-actions { min-width: 0; width: 100%; }
+  .showcase h3 { font-size: 18px; }
+  .snippet pre { padding: 12px; font-size: 12px; }
+}
+
+@page { size: A4; margin: 12mm 13mm; }
+@media print {
+  :root:not([data-theme="light"]), :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --text: #111418;
+    --muted: #4d5560;
+    --border: #dcdfe4;
+    --line: #cfd4da;
+    --accent: #0b7a6b;
+    --accent-soft: #e4f3f0;
+    --accent-ring: transparent;
+    --on-accent: #ffffff;
+    --chip: #f1f3f5;
+    --shadow: none;
+    color-scheme: light;
+  }
+  body { font-size: 9.5pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: inherit; }
+  .page { max-width: none; padding: 0; }
+  .sheet { border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+  .no-print { display: none !important; }
+  .hero { gap: 12px; }
+  h1 { font-size: 22pt; }
+  .role { margin-top: 4px; font-size: 12pt; }
+  .meta { margin-top: 6px; font-size: 9pt; }
+  .contacts { min-width: 0; gap: 2px; }
+  .contact, .contact.primary { padding: 2px 0; border: 0; background: none; color: var(--text); font-size: 9pt; }
+  .contact.primary .icon { color: var(--accent); }
+  .contact small { margin-left: 4px; }
+  .stats { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
+  .stats li { padding: 8px 10px; border-radius: 8px; }
+  .stats b { font-size: 14pt; }
+  .stats span { margin-top: 3px; font-size: 7.5pt; }
+  .layout { grid-template-columns: minmax(0, 1fr) 56mm; gap: 8mm; margin-top: 16px; }
+  section + section, aside section + section { margin-top: 14px; }
+  h2 { margin-bottom: 8px; font-size: 8pt; }
+  .summary p { font-size: 9.5pt; }
+  .job { padding-bottom: 12px; }
+  .job-head { break-inside: avoid; }
+  .job-head, .lead { break-after: avoid; }
+  .bullets li { break-inside: avoid; }
+  .tags { display: none; }
+  .js .reveal, .js .job.reveal::before, .js .job.reveal::after { opacity: 1; transform: none; transition: none; }
+  .topbar, #panel-code { display: none !important; }
+  #panel-resume { display: block !important; animation: none; }
+  .job.current::before { animation: none; }
+  .job h3 { font-size: 11pt; }
+  .company, .period { font-size: 8.5pt; }
+  .lead { margin-top: 4px; }
+  .bullets { margin-top: 4px; }
+  .bullets li { margin-top: 2px; }
+  .tags { margin-top: 6px; }
+  .tags li, .chips li { padding: 1px 7px; font-size: 8pt; }
+  .skill-group + .skill-group { margin-top: 8px; }
+  .skill-group h3 { margin-bottom: 4px; font-size: 9pt; }
+  .facts li + li { margin-top: 6px; }
+  .facts b { font-size: 9pt; }
+  .facts span, .note { font-size: 8.5pt; }
+  footer { margin-top: 14px; padding-top: 6px; font-size: 8pt; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="sheet">
+    <div class="topbar">
+      <nav class="tabs" role="tablist" aria-label="Разделы">
+        <a class="tab" href="#resume" role="tab" data-tab="resume" aria-controls="panel-resume">Резюме</a>
+        <a class="tab" href="#code" role="tab" data-tab="code" aria-controls="panel-code">Код</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="reveal">
+        <h1>Денис Науменков</h1>
+        <p class="role">Senior Unity Developer <span>· Multiplayer / Gameplay</span></p>
+        <ul class="meta">
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Краснодар, UTC+3
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            Удалённо, полная занятость
+          </li>
+        </ul>
+      </div>
+      <div class="contacts reveal">
+        <a class="contact primary" href="https://t.me/DenniNV">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          Telegram: @DenniNV
+          <small>предпочтительно</small>
+        </a>
+        <a class="contact" href="mailto:naumenkovdenis3@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          naumenkovdenis3@gmail.com
+        </a>
+        <a class="contact" href="https://github.com/DenniNV">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+          github.com/DenniNV
+        </a>
+        <button class="contact no-print" type="button" onclick="window.print()">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Сохранить в PDF
+        </button>
+      </div>
+    </header>
+
+    <div class="panel" id="panel-resume" role="tabpanel" data-panel="resume">
+    <ul class="stats" aria-label="Ключевые цифры">
+      <li class="reveal"><b data-count>6+ лет</b><span>коммерческой разработки на Unity</span></li>
+      <li class="reveal"><b data-count>60</b><span>игроков в одном PvP-матче</span></li>
+      <li class="reveal"><b data-count>250 мс</b><span>пинга, при которых игра остаётся комфортной</span></li>
+      <li class="reveal"><b data-count>100M+</b><span>установок Riding Extreme 3D</span></li>
+      <li class="reveal"><b data-count>+10%</b><span>выручки после внедрения Battle Pass</span></li>
+    </ul>
+
+    <div class="layout">
+      <main>
+        <section class="summary reveal">
+          <h2>Обо мне</h2>
+          <p>Unity-разработчик с 6+ годами коммерческого опыта. Специализируюсь на сетевом мультиплеере и сложных геймплейных механиках: последние три года разрабатываю клиент PvP-игры на FishNet — контроллер персонажа, боевую систему, client-side prediction. До этого выпускал мобильные игры в Google Play и App Store и развивал LiveOps-механики проекта со 100M+ установок. Развиваю собственный фреймворк <a href="#code">DNV Core</a> (DI, машина состояний, CMS с кодогенерацией, пулы) — его код открыт на GitHub.</p>
+        </section>
+
+        <section>
+          <h2 class="reveal">Опыт работы</h2>
+
+          <article class="job current reveal">
+            <div class="job-head">
+              <div>
+                <h3>Senior Unity Developer</h3>
+                <p class="company"><a href="https://twoheadedshark.com/">Two-Headed Shark</a> · Краснодар</p>
+              </div>
+              <p class="period"><time datetime="2023-06">июнь 2023</time> — сейчас</p>
+            </div>
+            <p class="lead">Клиентская часть многопользовательской PvP-игры на FishNet: геймплейное ядро, сетевая синхронизация, боевая система.</p>
+            <ul class="bullets">
+              <li>Реализовал сетевую синхронизацию движения и боя на client-side prediction: игра остаётся комфортной при <strong>пинге до 250 мс</strong>, <strong>60 игроков</strong> в матче.</li>
+              <li>Спроектировал модульный контроллер персонажа (root motion + state machine) и сетевую синхронизацию его состояний.</li>
+              <li>Переработал сетевой ragdoll: разделил на локальную и удалённую стратегии, перенёс решение о смерти к владельцу (на dedicated-сервере физики ragdoll нет), наблюдателям — стрим полной позы костей.</li>
+              <li>Построил систему кастомизации персонажа с сетевой синхронизацией: <strong>120+ комбинаций</strong> экипировки, вариации предметов, LOD из базового меша, сохранение в PlayFab; ядро покрыто <strong>44 EditMode-тестами</strong>.</li>
+              <li>Сделал серверную валидацию выстрела: точка вылета проверяется по дистанции и углу, что отсекает стрельбу «из-за спины».</li>
+              <li>Выстроил AI-ассистированный процесс разработки (Claude Code + Unity MCP): аудиты кода с планом рефакторинга, автотесты, прогон регрессий в редакторе; AI не коммитит, каждый дифф проходит ревью.</li>
+            </ul>
+            <ul class="tags" aria-label="Технологии">
+              <li>FishNet</li><li>Client-side prediction</li><li>Dedicated server</li><li>Root motion</li><li>State machine</li><li>Ragdoll</li><li>PlayFab</li><li>Claude Code + MCP</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="job-head">
+              <div>
+                <h3>Unity Developer</h3>
+                <p class="company"><a href="https://dats.games/index.html">Dats Games</a> · Москва</p>
+              </div>
+              <p class="period"><time datetime="2021-09">сентябрь 2021</time> — <time datetime="2023-04">апрель 2023</time></p>
+            </div>
+            <p class="lead">Флагманский проект — <strong>Riding Extreme 3D</strong>: 100M+ установок, рейтинг 4,2 при 1,4M отзывов в Google Play. Разработка и поддержка LiveOps-механик действующего проекта.</p>
+            <ul class="bullets">
+              <li>Спроектировал и внедрил Battle Pass (прогрессия, награды, сезоны): <strong>рост выручки проекта примерно на 10%</strong>.</li>
+              <li>Реализовал механики взаимодействия между игроками.</li>
+              <li>Переработал физику и поведение велосипедов.</li>
+              <li>Интегрировал LiveOps-стек: AppLovin (медиация рекламы), Firebase, GameAnalytics, OneSignal. Это дало A/B-тесты механик и выкатку конфигов без релиза.</li>
+              <li>Прошёл полный цикл разработки hyper-casual проектов, от ТЗ до релиза в Google Play и App Store: Merge Monsters: Horror Royale, Monster Fighter: Mutant Kick, Factory Rush.</li>
+            </ul>
+            <ul class="tags" aria-label="Технологии">
+              <li>LiveOps</li><li>Battle Pass</li><li>Firebase</li><li>AppLovin</li><li>GameAnalytics</li><li>OneSignal</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="job-head">
+              <div>
+                <h3>Unity Developer</h3>
+                <p class="company">ИП Дмитреев Никита</p>
+              </div>
+              <p class="period"><time datetime="2020-08">август 2020</time> — <time datetime="2021-09">сентябрь 2021</time></p>
+            </div>
+            <ul class="bullets">
+              <li>Реализовывал проекты от постановки задачи до публикации в Google Play и App Store.</li>
+              <li>Разрабатывал ключевые механики, интегрировал плагины, тестировал проекты.</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="job-head">
+              <div>
+                <h3>Unity Developer</h3>
+                <p class="company">IQClash · Минск</p>
+              </div>
+              <p class="period"><time datetime="2019-10">октябрь 2019</time> — <time datetime="2020-02">февраль 2020</time></p>
+            </div>
+            <ul class="bullets">
+              <li>Дорабатывал существующие проекты компании.</li>
+            </ul>
+          </article>
+        </section>
+      </main>
+
+      <aside>
+        <section class="reveal">
+          <h2>Навыки</h2>
+          <div class="skill-group">
+            <h3>Ядро</h3>
+            <ul class="chips"><li>C#</li><li>Unity</li><li>URP</li><li>HLSL / Shader Graph</li><li>DOTween</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Мультиплеер</h3>
+            <ul class="chips"><li>FishNet</li><li>Client-side prediction</li><li>Сетевая синхронизация</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Архитектура</h3>
+            <ul class="chips"><li>SOLID</li><li>Zenject</li><li>UniTask</li><li>Addressables</li><li>MVC</li><li>ECS</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>LiveOps и сервисы</h3>
+            <ul class="chips"><li>Firebase</li><li>PlayFab</li><li>GameAnalytics</li><li>AppLovin</li><li>OneSignal</li><li>REST API</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Инструменты и практики</h3>
+            <ul class="chips"><li>Git</li><li>Unity Profiler</li><li>Оптимизация производительности</li><li>Code Review</li><li>Unit Tests</li><li>Claude Code + Unity MCP</li><li>Blender (ретаргет, Python)</li><li>Наставничество</li></ul>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2>Языки</h2>
+          <ul class="facts">
+            <li><b>Русский</b><span>родной</span></li>
+            <li><b>Английский</b><span>B1, занимаюсь до B2</span></li>
+          </ul>
+        </section>
+
+        <section class="reveal">
+          <h2>Образование</h2>
+          <ul class="facts">
+            <li><b>Магистр, 2023</b><span>Донецкий государственный университет, физико-технический факультет, КТ</span></li>
+            <li><b>Бакалавр, 2021</b><span>Донецкий государственный университет, физико-технический факультет, КТ</span></li>
+            <li><b>Среднее специальное, 2018</b><span>ДТПА, ИВТ, КС</span></li>
+          </ul>
+        </section>
+
+        <section class="reveal">
+          <h2>Рекомендации</h2>
+          <p class="note">Рекомендация от CTO Dats Games. Контакт предоставлю по запросу.</p>
+        </section>
+      </aside>
+    </div>
+    </div>
+
+    <div class="panel" id="panel-code" role="tabpanel" data-panel="code">
+      <section class="repo reveal">
+        <div class="repo-main">
+          <p class="eyebrow">Библиотека · Unity 6 · C#</p>
+          <h2 class="repo-title">DNV Core</h2>
+          <p class="repo-lead">Моя основа для Unity-проектов, которую я развиваю как UPM-пакет: DI со скоупами, поток состояний игры, пайплайн исполнения, CMS с кодогенерацией, фасад Addressables, пулы, MVC для UI, логирование. Библиотека ничего не знает о конкретной игре: типы, id и контент приходят через инсталлеры, фабрики и CMS.</p>
+          <ul class="repo-facts">
+            <li><b>16</b> модулей</li>
+            <li><b>241</b> файл своего кода</li>
+            <li><b>38</b> EditMode-тестов</li>
+            <li>версия <b>0.3.3</b></li>
+          </ul>
+        </div>
+        <div class="repo-actions">
+          <a class="contact primary" href="https://github.com/DenniNV/dnv-core">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+            Репозиторий на GitHub
+          </a>
+          <a class="contact" href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/README.md">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            README и правила
+          </a>
+        </div>
+      </section>
+
+      <section class="showcases">
+        <h2 class="reveal">Три системы, которые стоит посмотреть</h2>
+
+        <article class="showcase reveal">
+          <div class="showcase-head">
+            <span class="showcase-num">01</span>
+            <div>
+              <h3>Пулы с поведением и жизненным циклом</h3>
+              <p class="showcase-path">Runtime/CodePresets/Pools</p>
+            </div>
+          </div>
+          <div class="showcase-text">
+            <p><strong>Задача.</strong> Пули, гильзы и эффекты попаданий появляются и исчезают сотнями. <code>Instantiate</code>/<code>Destroy</code> дают мусор для GC и спайки кадра, а обычный пул решает только аллокации: когда вернуть объект, каждый скрипт решает сам — и где-нибудь забывает.</p>
+            <ul class="bullets">
+              <li>Жизненный цикл — часть контракта: <code>IPoolable.OnRent</code> / <code>OnReturn</code>. Прогретый объект сразу проходит <code>OnReturn</code>, поэтому новый и возвращённый всегда в одинаковом покое.</li>
+              <li>Когда вернуть, решает правило <code>IReturnRule</code> (Strategy): по времени, по окончании партиклов или вручную. У каждого слота своё состояние правила, правило выбирается в инспекторе через <code>[SerializeReference]</code>.</li>
+              <li>Прогрев идёт пачками по 8 объектов с <code>UniTask.Yield</code>: большой пул не даёт спайк кадра на загрузке.</li>
+              <li>Потолок <code>MaxCount</code>: при переполнении переиспользуется самый старый активный объект, память не растёт.</li>
+              <li>Сегменты и <code>ISourceSelector</code>: один пул отдаёт несколько вариантов объекта. Пулы описаны в CMS, их id — сгенерированные константы <code>PoolIds</code>.</li>
+            </ul>
+            <p class="why"><strong>Почему так.</strong> В 0.3.2 я убрал время жизни пула по сцене: теперь все пулы глобальные, строятся и греются один раз на старте. Платим временем старта и памятью, получаем один жизненный цикл вместо двух и никаких пересозданий при смене сцены. Изменение помечено в CHANGELOG как BREAKING, с инструкцией по миграции.</p>
+            <p class="links">
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/CodePresets/Pools/Pool.cs">Pool.cs ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/tree/v0.3.3/Runtime/CodePresets/Pools/Rules">Правила возврата ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Tests/Editor/Pools/PoolProviderTests.cs">Тесты ↗</a>
+            </p>
+          </div>
+          <div class="snippets">
+            <figure class="snippet">
+              <figcaption><span>Pools/Interface/IReturnRule.cs</span><a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/CodePresets/Pools/Interface/IReturnRule.cs">GitHub ↗</a></figcaption>
+              <pre><code class="language-csharp">public interface IReturnRule&lt;in TItem&gt; where TItem : class
+{
+    IReturnState&lt;TItem&gt; CreateState();
+}
+
+public interface IReturnState&lt;in TItem&gt; where TItem : class
+{
+    void OnRent(TItem item);
+    bool ShouldReturn(TItem item, float deltaTime);
+}</code></pre>
+            </figure>
+            <figure class="snippet">
+              <figcaption><span>Pools/Pool.cs · Rent и Execute</span><a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/CodePresets/Pools/Pool.cs#L86-L149">GitHub ↗</a></figcaption>
+              <pre><code class="language-csharp">public TItem Rent(Vector3 position, Quaternion rotation)
+{
+    if(_isDisposed)
+    {
+        Log.Warning(LogCategory.Pool, $"Pool '{Id}' is disposed. Rent returned null.");
+        return null;
+    }
+
+    var slot = Take(SelectSegment());
+
+    slot.Value.transform.SetPositionAndRotation(position, rotation);
+    slot.Value.OnRent();
+    slot.State.OnRent(slot.Value);
+    _active.Add(slot);
+
+    return slot.Value;
+}
+
+// …
+
+public void Execute()
+{
+    if(_isDisposed)
+    {
+        return;
+    }
+
+    var deltaTime = Time.deltaTime;
+
+    for(var i = _active.Count - 1; i &gt;= 0; i--)
+    {
+        var poolItem = _active[i];
+
+        if(!poolItem.State.ShouldReturn(poolItem.Value, deltaTime))
+        {
+            continue;
+        }
+
+        _active.RemoveAt(i);
+        ReturnToSegment(poolItem);
+    }
+}</code></pre>
+            </figure>
+          </div>
+        </article>
+
+        <article class="showcase reveal">
+          <div class="showcase-head">
+            <span class="showcase-num">02</span>
+            <div>
+              <h3>CMS: данные для геймдизайнера, id для компилятора</h3>
+              <p class="showcase-path">Runtime/ContentManagerSystem · Editor/CodeGeneration</p>
+            </div>
+          </div>
+          <div class="showcase-text">
+            <p><strong>Задача.</strong> Контент игры — сцены, пулы, предметы — живёт в данных, а код ссылается на него по строковым id. Опечатка в строке проявляется только в рантайме, а переименование контента молча ломает ссылки.</p>
+            <ul class="bullets">
+              <li><code>CmsDatabase</code> — ScriptableObject, который редактируется в CMS Editor. В рантайме <code>Cms</code> работает с копией, так что игра не портит ассет.</li>
+              <li>Кнопка Regenerate IDs запускает все генераторы. Они находятся через <code>TypeCache</code>, регистрировать ничего не нужно.</li>
+              <li>Новый генератор — наследник <code>PartIdsGenerator&lt;TPart&gt;</code> с двумя членами: имя класса и откуда брать id (Template Method). <code>SceneIdsGenerator</code> занимает 10 строк.</li>
+              <li>Генератор сортирует id и предупреждает о дублях. <code>GeneratedCodeWriter</code> пишет константы в отдельную папку <code>AutoGenerated</code>, руками её не правят.</li>
+            </ul>
+            <p class="why"><strong>Почему так.</strong> Геймдизайнер меняет данные, не трогая код, а программист получает ошибку компиляции вместо бага в рантайме: <code>SceneIds.Game</code> вместо строки <code>"Game"</code>. Библиотека при этом не знает ни одного игрового id — игра добавляет свои генераторы рядом со своими частями CMS.</p>
+            <p class="links">
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Editor/CodeGeneration/PartIdsGenerator.cs">PartIdsGenerator.cs ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Editor/CodeGeneration/CmsCodeGeneration.cs">Поиск генераторов ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/ContentManagerSystem/Cms.cs">Cms.cs ↗</a>
+            </p>
+          </div>
+          <div class="snippets">
+            <figure class="snippet">
+              <figcaption><span>CodeGeneration/PartIdsGenerator.cs</span><a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Editor/CodeGeneration/PartIdsGenerator.cs">GitHub ↗</a></figcaption>
+              <pre><code class="language-csharp">/// &lt;summary&gt;
+/// Collects string ids from every &lt;typeparamref name="TPart"/&gt; across all CMS entities
+/// into a class of constants where each constant's name and value are the id itself.
+/// &lt;/summary&gt;
+public abstract class PartIdsGenerator&lt;TPart&gt; : ICmsCodeGenerator where TPart : CmsEntityPart
+{
+    protected abstract string ClassName { get; }
+
+    protected abstract IEnumerable&lt;string&gt; CollectIds(TPart part);
+
+    public void Generate(CmsDatabase database)
+    {
+        var constants = CollectUniqueIds(database).Select(id =&gt; new GeneratedConstant(id, id));
+
+        GeneratedCodeWriter.WriteConstants(ClassName, constants);
+    }
+
+    private IEnumerable&lt;string&gt; CollectUniqueIds(CmsDatabase database)
+    {
+        var ids = new SortedSet&lt;string&gt;(StringComparer.Ordinal);
+
+        foreach(var entity in database.Entities)
+        {
+            var part = entity.GetPart&lt;TPart&gt;();
+
+            if(part == null)
+            {
+                continue;
+            }
+
+            AddIds(ids, part, entity.Name);
+        }
+
+        return ids;
+    }
+
+    private void AddIds(SortedSet&lt;string&gt; ids, TPart part, string entityName)
+    {
+        foreach(var id in CollectIds(part) ?? Enumerable.Empty&lt;string&gt;())
+        {
+            if(string.IsNullOrEmpty(id))
+            {
+                continue;
+            }
+
+            if(ids.Add(id) == false)
+            {
+                Log.Warning(LogCategory.Editor, $"[{ClassName}] Duplicate id '{id}' in entity '{entityName}'.");
+            }
+        }
+    }
+}</code></pre>
+            </figure>
+            <figure class="snippet">
+              <figcaption><span>CodeGeneration/SceneIdsGenerator.cs · новый генератор</span><a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Editor/CodeGeneration/SceneIdsGenerator.cs">GitHub ↗</a></figcaption>
+              <pre><code class="language-csharp">public sealed class SceneIdsGenerator : PartIdsGenerator&lt;ScenesPart&gt;
+{
+    protected override string ClassName =&gt; "SceneIds";
+
+    protected override IEnumerable&lt;string&gt; CollectIds(ScenesPart part)
+    {
+        return part.Scenes?.Where(scene =&gt; scene != null).Select(scene =&gt; scene.Name);
+    }
+}</code></pre>
+            </figure>
+          </div>
+        </article>
+
+        <article class="showcase reveal">
+          <div class="showcase-head">
+            <span class="showcase-num">03</span>
+            <div>
+              <h3>Точка входа: один предсказуемый запуск</h3>
+              <p class="showcase-path">Runtime/Core · DependencyInjection · CodePresets/State</p>
+            </div>
+          </div>
+          <div class="showcase-text">
+            <p><strong>Задача.</strong> В Unity инициализация размазана по <code>Awake</code>/<code>Start</code> десятков объектов: порядок не гарантирован, зависимости ищутся через синглтоны и <code>FindObjectOfType</code>, а каждая сцена тащит свои глобальные менеджеры.</p>
+            <ul class="bullets">
+              <li>Одна сцена Entry и один <code>EntryPoint</code>: поднимает провайдер Addressables, загружает <code>ProjectContext</code>, <code>UIContext</code> и <code>ProjectDisposer</code> и строит их строго по порядку через <code>await</code>.</li>
+              <li>Контекст — это скоуп DI, инсталлеры и билдеры. Скоуп живёт ровно столько, сколько объект контекста: <code>SceneContext</code> умирает вместе со сценой.</li>
+              <li>Дальше ведёт глобальная машина состояний: Initialize → LoadGameScene → InGame. Набор состояний подставляет игра через <code>IGameStatesFactory</code> на <code>EntryPoint</code>, библиотека про игру не знает.</li>
+              <li>Машина синхронная: переход завершается внутри <code>SwitchTo</code>, запрос из <code>Activate</code> встаёт в очередь, токен состояния отменяется до <code>Release</code>. Уход из состояния отменяет и начатую им загрузку сцены.</li>
+              <li>Один <code>MonoBehaviour</code> с <code>Update</code> прогоняет пайплайн групп в явном порядке. Принцип «сначала реши, потом действуй»: группа Brain (250) отрабатывает раньше Default (500), и системы в том же кадре читают уже устоявшееся состояние.</li>
+            </ul>
+            <p class="why"><strong>Почему так.</strong> Сначала машина состояний была асинхронной, и на время <code>await</code> игра оставалась «между» состояниями. В 0.3.2 я сделал её синхронной, а асинхронную работу привязал к токену состояния. Контракт закреплён EditMode-тестами: порядок Release и Activate, отмена токена до Release, очередь переходов.</p>
+            <p class="links">
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/Core/EntryPoint.cs">EntryPoint.cs ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/CodePresets/State/StateSwitcher.cs">StateSwitcher.cs ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/ExtendedUpdate/ExecutionOrder.cs">ExecutionOrder.cs ↗</a>
+              <a href="https://github.com/DenniNV/dnv-core/tree/v0.3.3/Tests/Editor/State">Тесты ↗</a>
+            </p>
+          </div>
+          <div class="snippets">
+            <figure class="snippet">
+              <figcaption><span>Core/EntryPoint.cs · Enter</span><a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/Core/EntryPoint.cs#L31-L53">GitHub ↗</a></figcaption>
+              <pre><code class="language-csharp">private async UniTask Enter()
+{
+    CreateAddressableContainer();
+
+    var projectContext = await _assetProvider.InstantiateAsync(_projectContext, SpawnValues.Default, destroyCancellationToken);
+    var uiContext = await _assetProvider.InstantiateAsync(_uiContext, SpawnValues.Default, destroyCancellationToken);
+    var projectDisposer = await _assetProvider.InstantiateAsync(_projectDisposer, SpawnValues.Default, destroyCancellationToken);
+
+    await projectDisposer.Build(destroyCancellationToken);
+    await projectContext.Build(destroyCancellationToken);
+    await uiContext.Build(destroyCancellationToken);
+
+    DontDestroyOnLoad(projectContext);
+    DontDestroyOnLoad(uiContext);
+    DontDestroyOnLoad(projectDisposer);
+
+    IStateMachine gsm = Injector.Get&lt;GameStateMachine&gt;();
+    var statesFactory = _statesFactory ?? new DefaultGameStatesFactory();
+    gsm.Registration(statesFactory.Create(gsm));
+
+    gsm.SwitchTo&lt;InitializeState&gt;();
+    Application.targetFrameRate = _frameRate;
+}</code></pre>
+            </figure>
+            <figure class="snippet">
+              <figcaption><span>State/StateSwitcher.cs · очередь переходов</span><a href="https://github.com/DenniNV/dnv-core/blob/v0.3.3/Runtime/CodePresets/State/StateSwitcher.cs#L42-L130">GitHub ↗</a></figcaption>
+              <pre><code class="language-csharp">public void SwitchTo&lt;TState&gt;() where TState : class, IState
+{
+    _pendingTransitions.Enqueue(GetState&lt;TState&gt;());
+
+    if(_isBusy)
+    {
+        return;
+    }
+
+    RunPendingTransitions();
+}
+
+// …
+
+private void RunPendingTransitions()
+{
+    if(_pendingTransitions.Count == 0)
+    {
+        return;
+    }
+
+    _isBusy = true;
+
+    try
+    {
+        while (_pendingTransitions.Count &gt; 0)
+        {
+            Transition(_pendingTransitions.Dequeue());
+        }
+    }
+    catch
+    {
+        _pendingTransitions.Clear();
+        throw;
+    }
+    finally
+    {
+        _isBusy = false;
+    }
+}
+
+private void Transition(IState newState)
+{
+    if(CurrentState == newState)
+    {
+        throw new InvalidOperationException($"State machine is already in {newState.GetType().Name}");
+    }
+
+    var previous = CurrentState;
+
+    ReleaseCurrent();
+
+    _stateTokenSource = new CancellationTokenSource();
+    CurrentStateToken = _stateTokenSource.Token;
+    CurrentState = newState;
+
+    try
+    {
+        newState.Activate(CurrentStateToken);
+    }
+    finally
+    {
+        NotifyStateChanged(new StateChange(previous, newState, CurrentStateToken));
+    }
+}</code></pre>
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <p class="note license">Код открыт под лицензией PolyForm Noncommercial 1.0.0: читать, изучать и использовать в некоммерческих проектах можно, коммерческое использование — только с моего разрешения.</p>
+    </div>
+
+    <footer class="reveal">Обновлено в ноябре 2026</footer>
+  </div>
+</div>
+<script>
+(() => {
+  const DEFAULT_TAB = "resume";
+  const tabs = document.querySelectorAll("[data-tab]");
+  const panels = [...document.querySelectorAll("[data-panel]")];
+  const topbar = document.querySelector(".topbar");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const requestedTab = () => {
+    const name = decodeURIComponent(location.hash.slice(1));
+    return panels.some(panel => panel.dataset.panel === name) ? name : DEFAULT_TAB;
+  };
+
+  const activate = () => {
+    const name = requestedTab();
+    tabs.forEach(tab => tab.setAttribute("aria-selected", String(tab.dataset.tab === name)));
+    panels.forEach(panel => panel.classList.toggle("active", panel.dataset.panel === name));
+  };
+
+  window.addEventListener("hashchange", () => {
+    activate();
+    if (topbar.getBoundingClientRect().top < 0) {
+      topbar.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!window.hljs) return;
+    document.querySelectorAll(".snippet code").forEach(block => hljs.highlightElement(block));
+  });
+
+  activate();
+})();
+
+(() => {
+  const STAGGER_MS = 70;
+  const MAX_STAGGER_STEPS = 8;
+  const COUNT_DURATION_MS = 1100;
+  const items = document.querySelectorAll(".reveal");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+  const countUp = (el, delayMs) => {
+    const match = el.textContent.match(/^(\D*)(\d+)(.*)$/);
+    if (!match) return;
+    const [, prefix, digits, suffix] = match;
+    const target = Number(digits);
+    const render = value => { el.textContent = prefix + value + suffix; };
+    setTimeout(() => {
+      const start = performance.now();
+      const tick = now => {
+        const progress = Math.min((now - start) / COUNT_DURATION_MS, 1);
+        render(Math.round(target * easeOutCubic(progress)));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, delayMs);
+  };
+
+  const show = (el, step) => {
+    const delayMs = Math.min(step, MAX_STAGGER_STEPS) * STAGGER_MS;
+    el.style.setProperty("--d", delayMs + "ms");
+    el.classList.add("in");
+    const counter = el.querySelector("[data-count]");
+    if (counter) countUp(counter, delayMs);
+  };
+
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    items.forEach(el => el.classList.add("in"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries
+      .filter(entry => entry.isIntersecting)
+      .forEach((entry, step) => {
+        observer.unobserve(entry.target);
+        show(entry.target, step);
+      });
+  }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+
+  items.forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>
